@@ -39,7 +39,7 @@ class ClientController extends Controller{
 				->get();
 				// dd($data['list_penyakit']);
 		}else{
-			$data['list_penyakit'] = "tidak ada";
+			$data['list_penyakit'] = [];
 		}
 		return view('data1',$data);
 	}
