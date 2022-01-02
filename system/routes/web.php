@@ -22,6 +22,7 @@
 */
 
 
+Route::get('/', [ClientController::class, 'beranda']);
 Route::get('index', [ClientController::class, 'beranda']);
 Route::get('penyakitclient', [ClientController::class, 'penyakit']);
 
