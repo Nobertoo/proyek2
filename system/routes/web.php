@@ -24,9 +24,8 @@
 
 Route::get('/', [ClientController::class, 'beranda']);
 Route::get('index', [ClientController::class, 'beranda']);
-Route::get('penyakitclient', [ClientController::class, 'penyakit']);
-
-
+Route::get('penyakitclient', [ClientController::class, 'diagnosaGejala']);
+Route::get('penyakitclient/gejala', [ClientController::class, 'data1']);
 
 Route::get('datagejala', [HomeController::class, 'showDatagejala']);
 Route::get('datalokasi', [HomeController::class, 'showDatalokasi']);
@@ -61,9 +60,6 @@ Route::post('lokasi', [LokasiController::class, 'store']);
 Route::get('lokasi/{lokasi}/edit', [LokasiController::class, 'edit']);
 Route::put('lokasi/update/{lokasi}', [LokasiController::class, 'update']);
 Route::delete('lokasi/delete/{lokasi}', [LokasiController::class, 'destroy']);
-
-
-
 
 Route::get('login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('login', [AuthController::class, 'loginProcess']);

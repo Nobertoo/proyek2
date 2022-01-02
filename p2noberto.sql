@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 02 Jan 2022 pada 19.41
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.0
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jan 02, 2022 at 09:08 PM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `proyek2`
+-- Database: `p2noberto`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `gejala`
+-- Table structure for table `gejala`
 --
 
 CREATE TABLE `gejala` (
@@ -36,7 +36,7 @@ CREATE TABLE `gejala` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `gejala`
+-- Dumping data for table `gejala`
 --
 
 INSERT INTO `gejala` (`id`, `kode_gejala`, `nama_gejala`, `created_at`, `updated_at`) VALUES
@@ -62,7 +62,7 @@ INSERT INTO `gejala` (`id`, `kode_gejala`, `nama_gejala`, `created_at`, `updated
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `lokasi`
+-- Table structure for table `lokasi`
 --
 
 CREATE TABLE `lokasi` (
@@ -77,7 +77,7 @@ CREATE TABLE `lokasi` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penyakit`
+-- Table structure for table `penyakit`
 --
 
 CREATE TABLE `penyakit` (
@@ -90,7 +90,7 @@ CREATE TABLE `penyakit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `penyakit`
+-- Dumping data for table `penyakit`
 --
 
 INSERT INTO `penyakit` (`id`, `kode_penyakit`, `nama_penyakit`, `keterangan`, `created_at`, `updated_at`) VALUES
@@ -103,7 +103,31 @@ INSERT INTO `penyakit` (`id`, `kode_penyakit`, `nama_penyakit`, `keterangan`, `c
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `solusi`
+--
+
+CREATE TABLE `solusi` (
+  `id` int(11) NOT NULL,
+  `id_penyakit` int(11) DEFAULT NULL,
+  `kode_solusi` varchar(255) DEFAULT NULL,
+  `keterangan` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `update_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `solusi`
+--
+
+INSERT INTO `solusi` (`id`, `id_penyakit`, `kode_solusi`, `keterangan`, `created_at`, `update_at`) VALUES
+(1, 1, 'S01', 'Untuk penanganan Panleukopenia sendiri dapat dilakukan dengan terapi suportif atau disebut juga dengan imun support, yaitu dengan memberi makan dan minum secara perlahan , memberikan asupan vitamin, dan obat-obatan seperti antiemik sukralfat, antidiare ka', '2022-01-02 18:58:15', '2022-01-02 19:48:01'),
+(2, 6, 'S02', 'Pada beberapa kasus biasanya dokter akan membrikan vaksin untuk penyakit Feline Leukemia ini, tetapi pemulik kucing juga dapar memberikan antibiotik untuk menambah kekebalan daya tahan tubuh pada kucing.', '2022-01-02 19:01:25', '2022-01-02 19:48:17'),
+(3, 8, 'S03', 'Untuk penanganan pada Feline Calici pemilik apat menjaga kucing agar tidak dehidrasi, menyediakan tempat air agar kucing dapat minum kapan saja untuk mencegah kucing mengalami dehidrasi, serta pemilik dapat melakukan vaksinasi ke klinik dokter hewan terdekat .', '2022-01-02 19:01:25', '2022-01-02 19:48:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -120,7 +144,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `level`, `email`, `nama`, `alamat`, `foto`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -131,53 +155,65 @@ INSERT INTO `user` (`id`, `level`, `email`, `nama`, `alamat`, `foto`, `password`
 --
 
 --
--- Indeks untuk tabel `gejala`
+-- Indexes for table `gejala`
 --
 ALTER TABLE `gejala`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `lokasi`
+-- Indexes for table `lokasi`
 --
 ALTER TABLE `lokasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `penyakit`
+-- Indexes for table `penyakit`
 --
 ALTER TABLE `penyakit`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `solusi`
+--
+ALTER TABLE `solusi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `gejala`
+-- AUTO_INCREMENT for table `gejala`
 --
 ALTER TABLE `gejala`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT untuk tabel `lokasi`
+-- AUTO_INCREMENT for table `lokasi`
 --
 ALTER TABLE `lokasi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `penyakit`
+-- AUTO_INCREMENT for table `penyakit`
 --
 ALTER TABLE `penyakit`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `solusi`
+--
+ALTER TABLE `solusi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;

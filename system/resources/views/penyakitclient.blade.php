@@ -1,4 +1,4 @@
-@extends('views.index')
+@extends('admin.base')
 
 @section('content')
 <div class="container-fluid">
@@ -18,12 +18,13 @@
                         <th>Keterangan</th>
                     </thead>
                     <tbody>
-                        @foreach ($list_penyakit as $penyakit)
+                        @foreach ($list_gejala as $penyakit)
                         <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$penyakit->kode_penyakit}}</td>
-                        <td>{{$penyakit->nama_penyakit}}</td>
-                        <td>{{$penyakit->keterangan}}</td>
+                            <td>{{$loop->iteration}}</td>
+                            <td></td>
+                            <td>{{$penyakit->kode_penyakit}}</td>
+                            <td>{{$penyakit->nama_penyakit}}</td>
+                            <td>{{$penyakit->keterangan}}</td>
                         </tr>
                         @endforeach
                     </tbody>
