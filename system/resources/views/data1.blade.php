@@ -20,6 +20,23 @@
 		<td>{{$d->kode_penyakit}}</td>
 		<td>{{$d->nama_penyakit}}</td>
 		<td>{{$d->p_ket}}</td>
+		<td>{{$d->s_ket}}</td>
+	</tr>
+	@endforeach
+</table>
+<tr></tr>
+<table border="1">
+	<tr>
+		<th>kode_penyakit</th>
+		<th>nama_penyakit</th>
+		<th>keterangan_penyakit</th>
+		<th>kode_solusi</th>
+	</tr>
+	@foreach($list_penyakit as $d)
+	<tr>
+		<td>{{$d->kode_penyakit}}</td>
+		<td>{{$d->nama_penyakit}}</td>
+		<td>{{$d->p_ket}}</td>
 		<td>{{$d->kode_solusi}}</td>
 		<td>{{$d->s_ket}}</td>
 	</tr>

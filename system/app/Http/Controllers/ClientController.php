@@ -21,7 +21,8 @@ class ClientController extends Controller{
 		$request_gejala = request()->kode_gejala;
 		$hasil = $request_gejala;
 		// dd($hasil);
-
+		$list_data_penyakit = DB::table('penyakit')->select('*')->get();
+		// dd($list_data_penyakit);
 		if($request_gejala == ["G001","G002","G003","G004","G005","G009"]){
 			// Query_diagnosa
 			$data['list_penyakit'] = DB::table('penyakit')
@@ -36,7 +37,7 @@ class ClientController extends Controller{
 				->join('solusi','penyakit.id','solusi.id_penyakit')
 				->where("kode_penyakit","P002")
 				->get();
-				dd($data['list_penyakit']);
+				// dd($data['list_penyakit']);
 		}else{
 			$data['list_penyakit'] = "tidak ada";
 		}
